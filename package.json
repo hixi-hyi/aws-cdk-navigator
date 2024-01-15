@@ -23,7 +23,7 @@
   "homepage": "https://github.com/hixi-hyi/aws-cdk-navigator#readme",
   "files": [
     "dist"
-  ]
+  ],
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
