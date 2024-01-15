@@ -8,8 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "lint": "eslint --ignore-path .gitignore .",
-    "format": "eslint --ignore-path .gitignore --fix .; prettier --ignore-path .gitignore --write ."
+    "lint": "eslint --ignore-path .lintignore .",
+    "format": "eslint --ignore-path .lintignore --fix .; prettier --ignore-path .lintignore --write ."
   },
   "author": "Hiroyoshi HOUCHI",
   "license": "MIT",
@@ -21,6 +21,9 @@
     "url": "https://github.com/hixi-hyi/aws-cdk-navigator/issues"
   },
   "homepage": "https://github.com/hixi-hyi/aws-cdk-navigator#readme",
+  "files": [
+    "dist"
+  ]
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
