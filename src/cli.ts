@@ -30,12 +30,9 @@ export class Cli {
     console.log(this.accountInfo);
   }
 
-  public async confirm(): Promise<boolean> {
+  public async confirm(message?: string): Promise<boolean> {
     const ok = await prompts.confirm({
-      message: `You will need to confirm to operate on this account.
-${this.accountInfo}
-Please confirm account infomation before executing.
-Are you sure you want to continue? ([y]es/[n]o)`,
+      message: message || 'Are you sure you want to continue?',
       default: false,
     });
     return ok;
