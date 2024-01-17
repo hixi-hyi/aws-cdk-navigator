@@ -10,7 +10,7 @@ describe('Cli', () => {
 
     expect(cli.argv).toEqual(['test', 'test2']);
     expect(cli.command).toBe('test');
-    expect(cli.accountId.value).toBe('testAccountId');
-    expect(cli.accountAlias.value).toBe('testAccountAlias');
+    expect(cli.accountId).toBe('testAccountId');
+    expect(cli.accountAlias).toBe('testAccountAlias');
   });
 });

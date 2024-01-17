@@ -1,4 +1,3 @@
-import { Context } from './context';
 interface CliOptions {
     argv: string[];
     accountId: string;
@@ -7,12 +6,12 @@ interface CliOptions {
 export declare class Cli {
     readonly argv: string[];
     readonly command: string;
-    readonly accountId: Context;
-    readonly accountAlias: Context;
+    readonly accountId: string;
+    readonly accountAlias: string;
     readonly accountInfo: string;
     constructor(opts: CliOptions);
     printAwsAccountInfo(): void;
-    confirm(): Promise<boolean>;
+    confirm(message?: string): Promise<boolean>;
     exec(): void;
 }
 export {};

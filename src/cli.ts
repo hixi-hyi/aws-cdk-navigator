@@ -1,6 +1,5 @@
 import * as prompts from '@inquirer/prompts';
 import { table } from 'table';
-import { Context } from './context';
 import { spawn } from 'child_process';
 
 interface CliOptions {
@@ -11,15 +10,15 @@ interface CliOptions {
 export class Cli {
   public readonly argv: string[];
   public readonly command: string;
-  public readonly accountId: Context;
-  public readonly accountAlias: Context;
+  public readonly accountId: string;
+  public readonly accountAlias: string;
   public readonly accountInfo: string;
 
   public constructor(opts: CliOptions) {
     this.argv = opts.argv;
     this.command = this.argv[0] || '';
-    this.accountId = new Context(opts.accountId);
-    this.accountAlias = new Context(opts.accountAlias);
+    this.accountId = opts.accountId;
+    this.accountAlias = opts.accountAlias;
     this.accountInfo = table([
       ['accountId', 'accountAlias'],
       [opts.accountId, opts.accountAlias],
