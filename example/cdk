@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+const nav = require('aws-cdk-navigator');
+const { STSClient, GetCallerIdentityCommand } = require('@aws-sdk/client-sts');
+const { IAMClient, ListAccountAliasesCommand } = require('@aws-sdk/client-iam');
+
+const skipConfirmAliases = [''];
+const confirmCommands = ['deploy'];
+
+async function main() {
+  const callerIdentity = await new STSClient({}).send(new GetCallerIdentityCommand({}));
+  const accountAliases = await new IAMClient({}).send(new ListAccountAliasesCommand({}));
+
+  const cli = new nav.Cli({
+    accountId: callerIdentity.Account,
+    accountAlias: accountAliases.AccountAliases[0],
+    argv: process.argv.slice(2),
+  });
+  cli.printAwsAccountInfo();
+  if (confirmCommands.includes(cli.command) && !skipConfirmAliases.includes(cli.accountAlias)) {
+    cli.promptUserOrExit();
+  }
+  cli.exec();
+}
+
+main();

@@ -29,12 +29,14 @@ export class Cli {
     console.log(this.accountInfo);
   }
 
-  public async confirm(message?: string): Promise<boolean> {
+  public async promptUserOrExit(message?: string): Promise<void> {
     const ok = await prompts.confirm({
       message: message || 'Are you sure you want to continue?',
       default: false,
     });
-    return ok;
+    if (!ok) {
+      process.exit(1);
+    }
   }
 
   public exec(): void {

@@ -11,7 +11,7 @@ export declare class Cli {
     readonly accountInfo: string;
     constructor(opts: CliOptions);
     printAwsAccountInfo(): void;
-    confirm(message?: string): Promise<boolean>;
+    promptUserOrExit(message?: string): Promise<void>;
     exec(): void;
 }
 export {};
