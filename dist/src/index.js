@@ -15,7 +15,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./builder"), exports);
-__exportStar(require("./identifier"), exports);
 __exportStar(require("./cli"), exports);
 __exportStar(require("./context"), exports);
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLDRDQUEwQjtBQUMxQiwrQ0FBNkI7QUFDN0Isd0NBQXNCO0FBQ3RCLDRDQUEwQiIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCAqIGZyb20gJy4vYnVpbGRlcic7XG5leHBvcnQgKiBmcm9tICcuL2lkZW50aWZpZXInO1xuZXhwb3J0ICogZnJvbSAnLi9jbGknO1xuZXhwb3J0ICogZnJvbSAnLi9jb250ZXh0JztcbiJdfQ==
+__exportStar(require("./identifier"), exports);
+__exportStar(require("./nag"), exports);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLDRDQUEwQjtBQUMxQix3Q0FBc0I7QUFDdEIsNENBQTBCO0FBQzFCLCtDQUE2QjtBQUM3Qix3Q0FBc0IiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tICcuL2J1aWxkZXInO1xuZXhwb3J0ICogZnJvbSAnLi9jbGknO1xuZXhwb3J0ICogZnJvbSAnLi9jb250ZXh0JztcbmV4cG9ydCAqIGZyb20gJy4vaWRlbnRpZmllcic7XG5leHBvcnQgKiBmcm9tICcuL25hZyc7XG4iXX0=
