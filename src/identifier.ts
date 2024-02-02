@@ -14,6 +14,12 @@ export class Identifier {
     return id;
   }
 
+  public scope(value: string, callback: (id: Identifier) => void) {
+    const id = this.copy();
+    id.chains.push(value);
+    callback(id);
+  }
+
   public copy(): Identifier {
     const id = new Identifier(this.stack);
     id.chains = Array.from(this.chains);

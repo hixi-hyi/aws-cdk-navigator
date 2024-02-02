@@ -3,6 +3,7 @@ export declare class Identifier {
     private chains;
     constructor(stack: string[]);
     chain(value: string): Identifier;
+    scope(value: string, callback: (id: Identifier) => void): void;
     copy(): Identifier;
     get parent(): Identifier;
     get stackName(): string;
