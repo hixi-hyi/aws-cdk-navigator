@@ -1,70 +1,78 @@
-import * as strings from './strings';
+import { Strings } from './strings';
 
 export class Identifier {
-  private stack: string[] = [];
-  private chains: string[] = [];
+  private stacks: Strings;
+  private constructs: Strings;
 
-  constructor(stack: string[]) {
-    this.stack = Array.from(stack);
-  }
-
-  public chain(value: string): Identifier {
-    const id = this.copy();
-    id.chains.push(value);
-    return id;
-  }
-
-  public scope(value: string, callback: (id: Identifier) => void) {
-    const id = this.copy();
-    id.chains.push(value);
-    callback(id);
+  constructor(stacks: string[]) {
+    this.stacks = new Strings(stacks);
+    this.constructs = new Strings([]);
   }
 
   public copy(): Identifier {
-    const id = new Identifier(this.stack);
-    id.chains = Array.from(this.chains);
+    const id = new Identifier(this.stacks.asStrings());
+    id.constructs = this.constructs.copy();
     return id;
   }
 
   public get parent(): Identifier {
     const id = this.copy();
-    id.chains.pop();
+    id.constructs.pop();
     return id;
   }
 
+  public child(value: string): Identifier {
+    const id = this.copy();
+    id.constructs.push(value);
+    return id;
+  }
+
+  public scope(value: string, callback: (id: Identifier) => void) {
+    callback(this.child(value));
+  }
+
   public get stackName(): string {
-    return strings.toPascalCase(this.stack);
+    return this.stacks.toPascalCase();
   }
 
   public get constructName(): string {
-    return this.chains[this.chains.length - 1];
+    const constructs = this.constructs.asStrings();
+    return constructs[constructs.length - 1];
   }
 
-  private get all(): string[] {
-    return [...this.stack, ...this.chains];
+  private get all(): Strings {
+    return new Strings([...this.stacks.asStrings(), ...this.constructs.asStrings()]);
   }
 
   public get pascalName(): string {
-    return strings.toPascalCase(this.all);
+    return this.all.toPascalCase();
   }
 
   public get camelName(): string {
-    return strings.toCamelCase(this.all);
+    return this.all.toCamelCase();
   }
 
   public get snakeName(): string {
-    return strings.toSnakeCase(this.all);
+    return this.all.toSnakeCase();
   }
 
   public get kebabName(): string {
-    return strings.toKebabCase(this.all);
+    return this.all.toKebabCase();
   }
 
   public get dotName(): string {
-    return strings.toDotCase(this.all);
+    return this.all.toDotCase();
   }
 
   public get slashName(): string {
-    return strings.toSlashCase(this.all);
+    return this.all.toSlashCase();
+  }
+
+  public getStacks(): Strings {
+    return this.stacks.copy();
+  }
+
+  public getConstructs(): Strings {
+    return this.constructs.copy();
   }
 }

@@ -1,6 +1,6 @@
 import { Identifier } from './identifier';
 export declare class Builder {
-    private stack;
+    private stacks;
     constructor();
     scope(value: string, callback: (bd: Builder) => void): void;
     copy(): Builder;

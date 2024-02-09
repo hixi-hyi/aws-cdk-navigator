@@ -1,6 +1,14 @@
-export declare function toPascalCase(words: string[]): string;
-export declare function toCamelCase(words: string[]): string;
-export declare function toSnakeCase(words: string[]): string;
-export declare function toKebabCase(words: string[]): string;
-export declare function toDotCase(words: string[]): string;
-export declare function toSlashCase(words: string[]): string;
+export declare class Strings {
+    private values;
+    constructor(values: string[]);
+    toPascalCase(): string;
+    toCamelCase(): string;
+    toSnakeCase(): string;
+    toKebabCase(): string;
+    toDotCase(): string;
+    toSlashCase(): string;
+    copy(): Strings;
+    push(value: string): void;
+    pop(): string | undefined;
+    asStrings(): string[];
+}

@@ -8,10 +8,10 @@ describe('Builder', () => {
     builder = new Builder();
   });
 
-  test('scope method should add value to stack and execute callback', () => {
+  test('scope method should add value to stacks and execute callback', () => {
     const callbackMock = jest.fn((id: Builder) => {
       expect(id).toBeInstanceOf(Builder);
-      expect(id['stack']).toContain('testScope');
+      expect(id['stacks'].asStrings()).toContain('testScope');
     });
 
     builder.scope('testScope', callbackMock);
@@ -19,11 +19,11 @@ describe('Builder', () => {
     expect(callbackMock).toHaveBeenCalled();
   });
 
-  test('id method should return an Identifier with correct stack', () => {
+  test('id method should return an Identifier with correct stacks', () => {
     const identifier = builder.id('testId');
 
     expect(identifier).toBeInstanceOf(Identifier);
-    expect(identifier['stack']).toEqual(['testId']);
+    expect(identifier['stacks'].asStrings()).toEqual(['testId']);
   });
 
   test('copy method should create a new instance with the same stack', () => {
@@ -32,13 +32,13 @@ describe('Builder', () => {
     const copiedStackBuilder = builder.copy();
 
     expect(copiedStackBuilder).toBeInstanceOf(Builder);
-    expect(copiedStackBuilder['stack']).toEqual(builder['stack']);
+    expect(copiedStackBuilder['stacks'].asStrings()).toEqual(builder['stacks'].asStrings());
   });
 
   test('static id method should create an Identifier with correct stack', () => {
     const identifier = Builder.id('part1', 'part2', 'part3');
 
     expect(identifier).toBeInstanceOf(Identifier);
-    expect(identifier['stack']).toEqual(['part1', 'part2', 'part3']);
+    expect(identifier['stacks'].asStrings()).toEqual(['part1', 'part2', 'part3']);
   });
 });

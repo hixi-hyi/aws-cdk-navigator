@@ -6,7 +6,7 @@ describe('Identifier', () => {
     expect(id.stackName).toBe('ServiceCommonDatastore');
   });
   test('child method should add a child', () => {
-    const id = new Identifier(stack).chain('Api').chain('Fargate');
+    const id = new Identifier(stack).child('Api').child('Fargate');
     expect(id.pascalName).toBe('ServiceCommonDatastoreApiFargate');
     expect(id.constructName).toBe('Fargate');
   });
@@ -17,12 +17,12 @@ describe('Identifier', () => {
     expect(copiedId).toEqual(id);
   });
   test('parent method should remove the last child', () => {
-    const id = new Identifier(stack).chain('Api').chain('Fargate');
+    const id = new Identifier(stack).child('Api').child('Fargate');
     const parentId = id.parent;
     expect(parentId.constructName).toBe('Api');
   });
   test('strings method should create a correct string', () => {
-    const id = new Identifier(stack).chain('Api').chain('Fargate');
+    const id = new Identifier(stack).child('Api').child('Fargate');
     expect(id.pascalName).toBe('ServiceCommonDatastoreApiFargate');
     expect(id.camelName).toBe('serviceCommonDatastoreApiFargate');
     expect(id.snakeName).toBe('service_common_datastore_api_fargate');

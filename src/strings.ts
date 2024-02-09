@@ -1,29 +1,54 @@
-export function toPascalCase(words: string[]): string {
-  return words.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
-}
+export class Strings {
+  private values: string[] = [];
 
-export function toCamelCase(words: string[]): string {
-  return words.length > 0
-    ? words[0].toLowerCase() +
-        words
-          .slice(1)
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-          .join('')
-    : '';
-}
+  constructor(values: string[]) {
+    this.values = Array.from(values);
+  }
 
-export function toSnakeCase(words: string[]): string {
-  return words.map((word) => word.toLowerCase()).join('_');
-}
+  public toPascalCase(): string {
+    return this.values.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+  }
 
-export function toKebabCase(words: string[]): string {
-  return words.map((word) => word.toLowerCase()).join('-');
-}
+  public toCamelCase(): string {
+    return this.values.length > 0
+      ? this.values[0].toLowerCase() +
+          this.values
+            .slice(1)
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+            .join('')
+      : '';
+  }
 
-export function toDotCase(words: string[]): string {
-  return words.map((word) => word.toLowerCase()).join('.');
-}
+  public toSnakeCase(): string {
+    return this.values.map((word) => word.toLowerCase()).join('_');
+  }
 
-export function toSlashCase(words: string[]): string {
-  return words.map((word) => word.toLowerCase()).join('/');
+  public toKebabCase(): string {
+    return this.values.map((word) => word.toLowerCase()).join('-');
+  }
+
+  public toDotCase(): string {
+    return this.values.map((word) => word.toLowerCase()).join('.');
+  }
+
+  public toSlashCase(): string {
+    return this.values.map((word) => word.toLowerCase()).join('/');
+  }
+
+  public copy(): Strings {
+    const strings = new Strings(this.values);
+    return strings;
+  }
+
+  public push(value: string): void {
+    this.values.push(value);
+  }
+
+  public pop(): string | undefined {
+    return this.values.pop();
+  }
+
+  public asStrings(): string[] {
+    return Array.from(this.values);
+  }
 }
