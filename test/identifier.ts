@@ -9,6 +9,8 @@ describe('Identifier', () => {
     const id = new Identifier(stack).child('Api').child('Fargate');
     expect(id.pascalName).toBe('ServiceCommonDatastoreApiFargate');
     expect(id.constructName).toBe('Fargate');
+    expect(id.exportName('service')).toBe('ServiceCommonDatastore:ApiFargate:Service');
+    expect(id.exportName('service', 'role')).toBe('ServiceCommonDatastore:ApiFargate:ServiceRole');
   });
   test('copy method should create a new instance', () => {
     const id = new Identifier(stack);

@@ -1,6 +1,6 @@
 {
   "name": "aws-cdk-navigator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Enhance your AWS CDK experience.",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",

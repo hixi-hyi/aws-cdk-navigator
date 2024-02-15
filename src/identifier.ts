@@ -40,6 +40,11 @@ export class Identifier {
     return constructs[constructs.length - 1];
   }
 
+  public exportName(...values: string[]): string {
+    const value = new Strings(values);
+    return `${this.stacks.toPascalCase()}:${this.constructs.toPascalCase()}:${value.toPascalCase()}`;
+  }
+
   private get all(): Strings {
     return new Strings([...this.stacks.asStrings(), ...this.constructs.asStrings()]);
   }

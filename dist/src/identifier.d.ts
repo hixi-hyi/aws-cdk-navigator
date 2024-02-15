@@ -9,6 +9,7 @@ export declare class Identifier {
     scope(value: string, callback: (id: Identifier) => void): void;
     get stackName(): string;
     get constructName(): string;
+    exportName(...values: string[]): string;
     private get all();
     get pascalName(): string;
     get camelName(): string;
